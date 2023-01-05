@@ -56,7 +56,34 @@ app.get("/employee/:id", async (req, res) => {
 
 //UPDATE A EMPLOYEE
 
+app.put("/update/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { description } = req.body;
+    const updateEmployee = await pool.query(
+      "UPDATE employees SET description = $1 WHERE employee_id =$2",
+      [description, id]
+    );
+    res.json("employee was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 //DELETE A EMPLOYEE
+
+app.delete("/delete/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteEmployee = await pool.query(
+      "DELETE FROM employees WHERE employee_id = $1",
+      [id]
+    );
+    res.json("Employee was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 app.listen(5000, () => {
   try {
