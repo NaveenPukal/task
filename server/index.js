@@ -91,11 +91,3 @@ const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`server starting at port number ${PORT}`);
 });
-
-// app.listen(5000, () => {
-//   try {
-//     console.log("server has started port 5000");
-//   } catch (err) {
-//     console.error(err.message, "sckjsnckscnskcnskn");
-//   }
-// });
