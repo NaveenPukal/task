@@ -2,10 +2,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
+const dotenv = require("dotenv");
 //middelware
 app.use(cors());
 app.use(express.json());
-
+dotenv.config();
 //ROUTES
 
 //TEST
@@ -85,10 +86,16 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  try {
-    console.log("server has started port 5000");
-  } catch (err) {
-    console.error(err.message, "sckjsnckscnskcnskn");
-  }
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+  console.log(`server starting at port number ${PORT}`);
 });
+
+// app.listen(5000, () => {
+//   try {
+//     console.log("server has started port 5000");
+//   } catch (err) {
+//     console.error(err.message, "sckjsnckscnskcnskn");
+//   }
+// });
