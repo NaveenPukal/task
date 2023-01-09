@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import EditEmployee from "./EditEmployee";
 
 export default function ListEmployee() {
   const [employees, setEmployees] = useState([]);
@@ -45,16 +46,11 @@ export default function ListEmployee() {
           </tr>
         </thead>
         <tbody>
-          {/* <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-          </tr> */}
           {employees.map((employees) => (
             <tr key={employees.employee_id}>
               <td>{employees.description}</td>
               <td>
-                <button className="btn btn-primary btn-sm">Edit</button>
+                <EditEmployee employees={employees} />
               </td>
               <td>
                 <button
